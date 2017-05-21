@@ -10,7 +10,7 @@ class App extends Component {
       breaak:5,
       session:25,
       isSessionNow: true,
-      isPausedNow: false
+      isPausedNow: true,
     };
     // Toggle the state every second
     // setInterval(() => {
@@ -19,6 +19,9 @@ class App extends Component {
   }
 
   render() {
+
+    console.log('isPausedNow?', this.state.isPausedNow);
+    console.log('intervalId', this.intervalId);
 
     const plusSession = () => {
       var newSession = this.state.session + 1;
@@ -56,6 +59,24 @@ class App extends Component {
       }
     }
 
+    var formatSeconds = function(seconds){  //seconds to good format
+      console.log('formatSeconds')
+      var date = new Date(1970,0,1);
+      date.setSeconds(seconds);
+      return date.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+    }
+
+    const countDown = () => {
+
+      this.intervalId = setInterval(() => {
+        if(this.state.timer > 0){
+          var newTimer = this.state.timer - 1
+          this.setState({ timer: newTimer });
+        }
+      }, 1000);
+
+    }
+
     return (
       <div className="App">
         <div className="App-header">
@@ -84,7 +105,7 @@ class App extends Component {
         </div>
 
         <div id="clock">
-          <div id="circle">
+          <div id="circle" onClick={countDown}>
             <div id="session">
                SESSION
             </div>
