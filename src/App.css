@@ -7,18 +7,13 @@
 .App-logo {
   padding-bottom: 50px;
   /*animation: App-logo-spin infinite 20s linear;*/
-  height: 100px;
+  height: 80px;
 }
 
 .App-header {
   background-color: #222;
   padding: 20px;
-  /*color: white;*/
 }
-
-/*.App-intro {
-  font-size: large;
-}*/
 
 /*@keyframes App-logo-spin {
   from { transform: rotate(0deg); }
@@ -34,7 +29,7 @@ body{
 #title{
   font-family: 'Pacifico';
   color:#FFF;
-  font-size: 4em;
+  font-size: 3em;
 }
 
 #setters{
