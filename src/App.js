@@ -6,7 +6,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      timer:25,
+      timer:25*60,
       breaak:5,
       session:25,
       isSessionNow: true,
@@ -109,7 +109,7 @@ class App extends Component {
             <div id="session">
                SESSION
             </div>
-            <div id="countDown">{this.state.timer}</div>
+            <div id="countDown">{formatSeconds(this.state.timer)}</div>
           </div>
         </div>
 
