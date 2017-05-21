@@ -1,24 +1,162 @@
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  padding-bottom: 50px;
+  /*animation: App-logo-spin infinite 20s linear;*/
+  height: 100px;
 }
 
 .App-header {
   background-color: #222;
-  height: 150px;
   padding: 20px;
-  color: white;
+  /*color: white;*/
 }
 
-.App-intro {
+/*.App-intro {
   font-size: large;
-}
+}*/
 
-@keyframes App-logo-spin {
+/*@keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}*/
+
+
+body{
+  color:white;
+  background-color: #3d3d3d;
+}
+
+#title{
+  font-family: 'Pacifico';
+  color:#FFF;
+  font-size: 4em;
+}
+
+#setters{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.setter{
+  margin:2em;
+  width: 14em;
+}
+
+.setterTitle{
+  font-size: 1.6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plusOrMinus{
+  display:flex;
+  flex-direction: row;
+}
+
+.item{
+  font-size: 2em;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex:1;
+}
+
+#clock{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height: 20em;
+}
+
+#circle{
+  /*background-color: red;*/
+  margin-top:2em;
+  flex-direction: column;
+  width: 20em;
+  height: 20em;
+  border-width: thin;
+  border-style: solid;
+  border-color: yellow;
+  border-radius: 180px;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+}
+
+#circle:hover{
+  cursor: pointer;
+}
+
+#circle:active{
+  margin-top:2em;
+  flex-direction: column;
+  width: 20em;
+  height: 20em;
+  border-width: thin;
+  border-style: solid;
+  border-color: yellow;
+  border-radius: 180px;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+  background-color: rgba(110, 110, 110, 0.5);
+}
+
+#session{
+  font-family: Libre Franklin;
+  font-size: 2.2em;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color:white;
+  width: 10em;
+  height: 2.5em;
+  /*background-color: green;*/
+}
+
+#time{
+  font-size: 3.5em;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color:white;
+  width: 10em;
+  height: 3em;
+  /*background-color: pink;*/
+}
+
+#resetButtonContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*background-color: red;*/
+}
+
+#resetButton{
+  margin-top: 3em;
+  cursor: pointer;
+  display: flex;
+  margin-bottom: 2em;
+  /*background-color: blue;*/
+  justify-content: center;
+  align-items: center;
+  border-color: red;
+  border-width: thin;
+  border-style: solid;
+  border-radius:180px;
+  width: 4em;
+  height: 4em;
+  padding: 1em;
+}
+
+#resetButton:active{
+  background-color: rgba(110, 110, 110, 0.5);
 }

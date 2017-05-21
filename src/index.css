@@ -1,5 +1,9 @@
+@import url(http://fonts.googleapis.com/css?family=Libre+Franklin);
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  box-sizing: border-box;
+  font-family: Libre Franklin;
 }
