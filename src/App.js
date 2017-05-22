@@ -18,8 +18,6 @@ class App extends Component {
   render() {
 
     const {breaak, session, timer, isPausedNow, isSessionNow} = this.state;
-    console.log(timer)
-    console.log(isSessionNow)
 
     const plusSession = () => {
       if(isPausedNow){
@@ -83,12 +81,10 @@ class App extends Component {
             this.setState({ timer: newTimer });
           }else if(this.state.timer === 0){
             if(this.state.isSessionNow === true){
-              console.log('ici')
               this.setState({isSessionNow:false})
               this.setState({sessionOrBreak:'BREAK'})
               this.setState({timer: this.state.breaak * 60})
             }else{
-              console.log('la')
               this.setState({isSessionNow:true})
               this.setState({sessionOrBreak:'SESSION'})
               this.setState({timer: this.state.session * 60})
