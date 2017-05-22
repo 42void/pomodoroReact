@@ -6,40 +6,32 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // timer:25*60,
-      timer:1*60,
+      timer:25*60,
       breaak:5,
-      // session:25,
-      session:1,
+      session:25,
       isSessionNow: true,
       isPausedNow: true,
       sessionOrBreak: 'SESSION'
     };
-    // Toggle the state every second
-    // setInterval(() => {
-    //   this.setState({ showText: !this.state.showText });
-    // }, 1000);
   }
 
   render() {
 
     console.log('isPausedNow?', this.state.isPausedNow);
-    // console.log('intervalId', this.intervalId);
     console.log('timer', this.state.timer)
     console.log('isSessionNow', this.state.isSessionNow)
+    const {breaak, session, isSessionNow, timer} = this.state;
 
     const plusSession = () => {
-      console.log('plusSession')
-      var newSession = this.state.session + 1;
-      if(this.state.isSessionNow){
-        this.setState({session: newSession, timer: this.state.timer + 60})
+      var newSession = session + 1;
+      if(isSessionNow){
+        this.setState({session: newSession, timer: timer + 60})
       }else{
         this.setState({session: newSession})
       }
     }
 
     const minusSession = () => {
-      const {session, isSessionNow, timer} = this.state;
       var newSession = session - 1;
       if(isSessionNow){
         this.setState({session: newSession, timer: timer - 60})
@@ -49,7 +41,6 @@ class App extends Component {
     }
 
     const plusBreak = () => {
-      const {breaak, isSessionNow, timer} = this.state
       var newBreak = breaak + 1;
       if(isSessionNow){
         this.setState({breaak: newBreak})
@@ -59,7 +50,6 @@ class App extends Component {
     }
 
     const minusBreak = () => {
-      const { breaak, isSessionNow, timer} = this.state
       var newBreak = breaak - 1;
       if(isSessionNow){
         this.setState({breaak: newBreak})
@@ -68,20 +58,18 @@ class App extends Component {
       }
     }
 
-    var formatSeconds = function(seconds){  //seconds to good format
-      console.log('formatSeconds')
+    var formatSeconds = function(seconds){  //seconds to format hh:mm:ss
       var date = new Date(1970,0,1);
       date.setSeconds(seconds);
       return date.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
     }
 
     const countDown = () => {
-
       if(this.state.isPausedNow){
         this.setState({isPausedNow:false})
         this.intervalId = setInterval(() => {
           if(this.state.timer > 0){
-            var newTimer = this.state.timer - 1 // - 1 seconde
+            var newTimer = this.state.timer - 1 // - 1 second
             this.setState({ timer: newTimer });
           }else if(this.state.timer === 0){
             if(this.state.isSessionNow){
