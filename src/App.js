@@ -23,6 +23,7 @@ class App extends Component {
     console.log('isPausedNow?', this.state.isPausedNow);
     // console.log('intervalId', this.intervalId);
     console.log('timer', this.state.timer)
+    console.log('isSessionNow', this.state.isSessionNow)
 
     const plusSession = () => {
       console.log('plusSession')
@@ -35,29 +36,32 @@ class App extends Component {
     }
 
     const minusSession = () => {
-      var newSession = this.state.session - 1;
-      if(this.state.isSessionNow){
-        this.setState({session: newSession, timer: this.state.timer - 60})
+      const {session, isSessionNow, timer} = this.state;
+      var newSession = session - 1;
+      if(isSessionNow){
+        this.setState({session: newSession, timer: timer - 60})
       }else{
         this.setState({session: newSession})
       }
     }
 
     const plusBreak = () => {
-      var newBreak = this.state.breaak + 1;
-      if(this.state.isSessionNow){
+      const {breaak, isSessionNow, timer} = this.state
+      var newBreak = breaak + 1;
+      if(isSessionNow){
         this.setState({breaak: newBreak})
       }else{
-        this.setState({breaak: newBreak, timer: this.state.timer + 60})
+        this.setState({breaak: newBreak, timer: timer + 60})
       }
     }
 
     const minusBreak = () => {
-      var newBreak = this.state.breaak - 1;
-      if(this.state.isSessionNow){
+      const { breaak, isSessionNow, timer} = this.state
+      var newBreak = breaak - 1;
+      if(isSessionNow){
         this.setState({breaak: newBreak})
       }else{
-        this.setState({breaak: newBreak, timer:this.state.timer - 60})
+        this.setState({breaak: newBreak, timer:timer - 60})
       }
     }
 
@@ -75,7 +79,14 @@ class App extends Component {
           if(this.state.timer > 0){
             var newTimer = this.state.timer - 1 // - 1 seconde
             this.setState({ timer: newTimer });
-
+          }else if(this.state.timer === 0){
+            if(this.state.isSessionNow){
+              this.setState({isSessionNow:false})
+              this.setState({timer: this.state.breaak * 60})
+            }else{
+              this.setState({isSessionNow:true})
+              this.setState({timer: this.state.session * 60})
+            }
           }
         }, 1000);
       }else{
