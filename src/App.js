@@ -17,10 +17,10 @@ class App extends Component {
 
   render() {
 
-    console.log('isPausedNow?', this.state.isPausedNow);
-    console.log('timer', this.state.timer)
-    console.log('isSessionNow', this.state.isSessionNow)
-    const {breaak, session, isSessionNow, timer} = this.state;
+    // console.log('isPausedNow?', this.state.isPausedNow);
+    // console.log('timer', this.state.timer)
+    // console.log('isSessionNow', this.state.isSessionNow)
+    const {breaak, session, isSessionNow, timer, isPausedNow} = this.state;
 
     const plusSession = () => {
       var newSession = session + 1;
@@ -65,21 +65,21 @@ class App extends Component {
     }
 
     const countDown = () => {
-      if(this.state.isPausedNow){
+      if(isPausedNow){
         this.setState({isPausedNow:false})
         this.intervalId = setInterval(() => {
-          if(this.state.timer > 0){
-            var newTimer = this.state.timer - 1 // - 1 second
+          if(timer > 0){
+            var newTimer = timer - 1 // - 1 second
             this.setState({ timer: newTimer });
-          }else if(this.state.timer === 0){
-            if(this.state.isSessionNow){
+          }else if(timer === 0){
+            if(isSessionNow){
               this.setState({isSessionNow:false})
               this.setState({sessionOrBreak:'BREAK'})
-              this.setState({timer: this.state.breaak * 60})
+              this.setState({timer: breaak * 60})
             }else{
               this.setState({isSessionNow:true})
               this.setState({sessionOrBreak:'SESSION'})
-              this.setState({timer: this.state.session * 60})
+              this.setState({timer: session * 60})
             }
           }
         }, 1000);
