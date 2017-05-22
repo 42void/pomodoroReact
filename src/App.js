@@ -17,9 +17,6 @@ class App extends Component {
 
   render() {
 
-    console.log('isPausedNow?', this.state.isPausedNow);
-    console.log('timer', this.state.timer)
-    console.log('isSessionNow', this.state.isSessionNow)
     const {breaak, session, isSessionNow, timer} = this.state;
 
     const plusSession = () => {
@@ -32,12 +29,15 @@ class App extends Component {
     }
 
     const minusSession = () => {
-      var newSession = session - 1;
-      if(isSessionNow){
-        this.setState({session: newSession, timer: timer - 60})
-      }else{
-        this.setState({session: newSession})
+      if(session > 1){
+        var newSession = session - 1;
+        if(isSessionNow){
+          this.setState({session: newSession, timer: timer - 60})
+        }else{
+          this.setState({session: newSession})
+        }
       }
+
     }
 
     const plusBreak = () => {
@@ -50,11 +50,13 @@ class App extends Component {
     }
 
     const minusBreak = () => {
-      var newBreak = breaak - 1;
-      if(isSessionNow){
-        this.setState({breaak: newBreak})
-      }else{
-        this.setState({breaak: newBreak, timer:timer - 60})
+      if(breaak > 1){
+        var newBreak = breaak - 1;
+        if(isSessionNow){
+          this.setState({breaak: newBreak})
+        }else{
+          this.setState({breaak: newBreak, timer:timer - 60})
+        }
       }
     }
 
