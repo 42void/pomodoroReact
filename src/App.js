@@ -69,14 +69,19 @@ class App extends Component {
     }
 
     const countDown = () => {
+      if(this.state.isPausedNow){
+        this.setState({isPausedNow:false})
+        this.intervalId = setInterval(() => {
+          if(this.state.timer > 0){
+            var newTimer = this.state.timer - 1 // - 1 seconde
+            this.setState({ timer: newTimer });
 
-      this.intervalId = setInterval(() => {
-        if(this.state.timer > 0){
-          var newTimer = this.state.timer - 1
-          this.setState({ timer: newTimer });
-        }
-      }, 1000);
-
+          }
+        }, 1000);
+      }else{
+        this.setState({isPausedNow:true})
+        clearInterval(this.intervalId)
+      }
     }
 
     return (
