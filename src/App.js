@@ -17,19 +17,23 @@ class App extends Component {
 
   render() {
 
-    const {breaak, session, isSessionNow, timer} = this.state;
+    const {breaak, session, timer, isPausedNow, isSessionNow} = this.state;
+    console.log(timer)
+    console.log(isSessionNow)
 
     const plusSession = () => {
-      var newSession = session + 1;
-      if(isSessionNow){
-        this.setState({session: newSession, timer: timer + 60})
-      }else{
-        this.setState({session: newSession})
+      if(isPausedNow){
+        var newSession = session + 1;
+        if(isSessionNow){
+          this.setState({session: newSession, timer: timer + 60})
+        }else{
+          this.setState({session: newSession})
+        }
       }
     }
 
     const minusSession = () => {
-      if(session > 1){
+      if(session > 1 && isPausedNow){
         var newSession = session - 1;
         if(isSessionNow){
           this.setState({session: newSession, timer: timer - 60})
@@ -41,21 +45,25 @@ class App extends Component {
     }
 
     const plusBreak = () => {
-      var newBreak = breaak + 1;
-      if(isSessionNow){
-        this.setState({breaak: newBreak})
-      }else{
-        this.setState({breaak: newBreak, timer: timer + 60})
+      if(isPausedNow){
+        var newBreak = breaak + 1;
+        if(isSessionNow){
+          this.setState({breaak: newBreak})
+        }else{
+          this.setState({breaak: newBreak, timer: timer + 60})
+        }
       }
     }
 
     const minusBreak = () => {
-      if(breaak > 1){
-        var newBreak = breaak - 1;
-        if(isSessionNow){
-          this.setState({breaak: newBreak})
-        }else{
-          this.setState({breaak: newBreak, timer:timer - 60})
+      if(isPausedNow){
+        if(breaak > 1){
+          var newBreak = breaak - 1;
+          if(isSessionNow){
+            this.setState({breaak: newBreak})
+          }else{
+            this.setState({breaak: newBreak, timer:timer - 60})
+          }
         }
       }
     }
@@ -66,7 +74,7 @@ class App extends Component {
       return date.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
     }
 
-    const countDown = () => {
+    var countDown = () => {
       if(this.state.isPausedNow){
         this.setState({isPausedNow:false})
         this.intervalId = setInterval(() => {
@@ -74,11 +82,13 @@ class App extends Component {
             var newTimer = this.state.timer - 1 // - 1 second
             this.setState({ timer: newTimer });
           }else if(this.state.timer === 0){
-            if(isSessionNow){
+            if(this.state.isSessionNow === true){
+              console.log('ici')
               this.setState({isSessionNow:false})
               this.setState({sessionOrBreak:'BREAK'})
               this.setState({timer: this.state.breaak * 60})
             }else{
+              console.log('la')
               this.setState({isSessionNow:true})
               this.setState({sessionOrBreak:'SESSION'})
               this.setState({timer: this.state.session * 60})
