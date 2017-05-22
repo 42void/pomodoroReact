@@ -17,10 +17,10 @@ class App extends Component {
 
   render() {
 
-    // console.log('isPausedNow?', this.state.isPausedNow);
-    // console.log('timer', this.state.timer)
-    // console.log('isSessionNow', this.state.isSessionNow)
-    const {breaak, session, isSessionNow, timer, isPausedNow} = this.state;
+    console.log('isPausedNow?', this.state.isPausedNow);
+    console.log('timer', this.state.timer)
+    console.log('isSessionNow', this.state.isSessionNow)
+    const {breaak, session, isSessionNow, timer} = this.state;
 
     const plusSession = () => {
       var newSession = session + 1;
@@ -65,21 +65,21 @@ class App extends Component {
     }
 
     const countDown = () => {
-      if(isPausedNow){
+      if(this.state.isPausedNow){
         this.setState({isPausedNow:false})
         this.intervalId = setInterval(() => {
-          if(timer > 0){
-            var newTimer = timer - 1 // - 1 second
+          if(this.state.timer > 0){
+            var newTimer = this.state.timer - 1 // - 1 second
             this.setState({ timer: newTimer });
-          }else if(timer === 0){
+          }else if(this.state.timer === 0){
             if(isSessionNow){
               this.setState({isSessionNow:false})
               this.setState({sessionOrBreak:'BREAK'})
-              this.setState({timer: breaak * 60})
+              this.setState({timer: this.state.breaak * 60})
             }else{
               this.setState({isSessionNow:true})
               this.setState({sessionOrBreak:'SESSION'})
-              this.setState({timer: session * 60})
+              this.setState({timer: this.state.session * 60})
             }
           }
         }, 1000);
@@ -87,6 +87,10 @@ class App extends Component {
         this.setState({isPausedNow:true})
         clearInterval(this.intervalId)
       }
+    }
+
+    const reset = () => {
+      this.setState({session:25, breaak:5, timer:25*60})
     }
 
     return (
@@ -126,7 +130,7 @@ class App extends Component {
         </div>
 
         <div id="resetButtonContainer">
-          <div id="resetButton">
+          <div id="resetButton" onClick={reset}>
             RESET
           </div>
         </div>
