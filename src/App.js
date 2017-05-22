@@ -21,9 +21,9 @@ class App extends Component {
 
     const plusSession = () => {
       if(isPausedNow){
-        var newSession = session + 1;
+        var newSession = session + 5;
         if(isSessionNow){
-          this.setState({session: newSession, timer: timer + 60})
+          this.setState({session: newSession, timer: newSession * 60})
         }else{
           this.setState({session: newSession})
         }
@@ -31,39 +31,36 @@ class App extends Component {
     }
 
     const minusSession = () => {
-      if(session > 1 && isPausedNow){
-        var newSession = session - 1;
+      if(session > 5 && isPausedNow){
+        var newSession = session - 5;
         if(isSessionNow){
-          this.setState({session: newSession, timer: timer - 60})
+          this.setState({session: newSession, timer: newSession * 60})
         }else{
           this.setState({session: newSession})
         }
       }
-
     }
 
     const plusBreak = () => {
       if(isPausedNow){
-        var newBreak = breaak + 1;
+        var newBreak = breaak + 5;
         if(isSessionNow){
           this.setState({breaak: newBreak})
         }else{
-          this.setState({breaak: newBreak, timer: timer + 60})
+          this.setState({breaak: newBreak, timer: newBreak * 60})
         }
       }
     }
 
     const minusBreak = () => {
-      if(isPausedNow){
-        if(breaak > 1){
-          var newBreak = breaak - 1;
+        if(breaak > 5 && isPausedNow){
+          var newBreak = breaak - 5;
           if(isSessionNow){
             this.setState({breaak: newBreak})
           }else{
-            this.setState({breaak: newBreak, timer:timer - 60})
+            this.setState({breaak: newBreak, timer:newBreak * 60})
           }
         }
-      }
     }
 
     var formatSeconds = function(seconds){  //seconds to format hh:mm:ss
