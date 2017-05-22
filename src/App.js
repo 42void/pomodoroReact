@@ -21,12 +21,14 @@ class App extends Component {
   render() {
 
     console.log('isPausedNow?', this.state.isPausedNow);
-    console.log('intervalId', this.intervalId);
+    // console.log('intervalId', this.intervalId);
+    console.log('timer', this.state.timer)
 
     const plusSession = () => {
+      console.log('plusSession')
       var newSession = this.state.session + 1;
       if(this.state.isSessionNow){
-        this.setState({session: newSession, timer: this.state.session})
+        this.setState({session: newSession, timer: this.state.timer + 60})
       }else{
         this.setState({session: newSession})
       }
@@ -35,7 +37,7 @@ class App extends Component {
     const minusSession = () => {
       var newSession = this.state.session - 1;
       if(this.state.isSessionNow){
-        this.setState({session: newSession, timer: this.state.session})
+        this.setState({session: newSession, timer: this.state.timer - 60})
       }else{
         this.setState({session: newSession})
       }
@@ -46,7 +48,7 @@ class App extends Component {
       if(this.state.isSessionNow){
         this.setState({breaak: newBreak})
       }else{
-        this.setState({breaak: newBreak, timer: this.state.newBreak})
+        this.setState({breaak: newBreak, timer: this.state.timer + 60})
       }
     }
 
@@ -55,7 +57,7 @@ class App extends Component {
       if(this.state.isSessionNow){
         this.setState({breaak: newBreak})
       }else{
-        this.setState({breaak: newBreak, timer:this.state.newBreak})
+        this.setState({breaak: newBreak, timer:this.state.timer - 60})
       }
     }
 
