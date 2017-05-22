@@ -6,11 +6,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      timer:25*60,
+      // timer:25*60,
+      timer:1*60,
       breaak:5,
-      session:25,
+      // session:25,
+      session:1,
       isSessionNow: true,
       isPausedNow: true,
+      sessionOrBreak: 'SESSION'
     };
     // Toggle the state every second
     // setInterval(() => {
@@ -73,6 +76,7 @@ class App extends Component {
     }
 
     const countDown = () => {
+
       if(this.state.isPausedNow){
         this.setState({isPausedNow:false})
         this.intervalId = setInterval(() => {
@@ -82,9 +86,11 @@ class App extends Component {
           }else if(this.state.timer === 0){
             if(this.state.isSessionNow){
               this.setState({isSessionNow:false})
+              this.setState({sessionOrBreak:'BREAK'})
               this.setState({timer: this.state.breaak * 60})
             }else{
               this.setState({isSessionNow:true})
+              this.setState({sessionOrBreak:'SESSION'})
               this.setState({timer: this.state.session * 60})
             }
           }
@@ -125,7 +131,7 @@ class App extends Component {
         <div id="clock">
           <div id="circle" onClick={countDown}>
             <div id="session">
-               SESSION
+               {this.state.sessionOrBreak}
             </div>
             <div id="countDown">{formatSeconds(this.state.timer)}</div>
           </div>
