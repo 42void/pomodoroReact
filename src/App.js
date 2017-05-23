@@ -17,7 +17,7 @@ class App extends Component {
 
   render() {
 
-    const {breaak, session, timer, isPausedNow, isSessionNow} = this.state;
+    const {breaak, session, isPausedNow, isSessionNow} = this.state;
 
     const plusSession = () => {
       if(isPausedNow){

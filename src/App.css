@@ -5,20 +5,15 @@
 }
 
 .App-logo {
-  padding-bottom: 50px;
-  /*animation: App-logo-spin infinite 20s linear;*/
-  height: 80px;
+  margin-top: -3em;
+  height: 3em;
 }
 
 .App-header {
   background-color: #222;
-  padding: 20px;
+  padding-top: 0.3em;
+  padding-bottom: 2.3em;
 }
-
-/*@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}*/
 
 body{
   color:white;
@@ -28,10 +23,12 @@ body{
 #title{
   font-family: 'Pacifico';
   color:#FFF;
-  font-size: 3em;
+  font-size: 2.8em;
 }
 
 #setters{
+  margin-left: 1em;
+  margin-right: 1em;
   display:flex;
   flex-direction: row;
   align-items: center;
@@ -39,12 +36,16 @@ body{
 }
 
 .setter{
+  flex-direction: column;
+  display: flex;
   margin:2em;
-  width: 14em;
+  width: 12em;
+  align-items: center;
+  justify-content: center;
 }
 
 .setterTitle{
-  font-size: 1.6em;
+  font-size: 1.1em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,10 +54,11 @@ body{
 .plusOrMinus{
   display:flex;
   flex-direction: row;
+  width: 10em;
 }
 
 .item{
-  font-size: 2em;
+  font-size: 1.5em;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -71,11 +73,10 @@ body{
 }
 
 #circle{
-  /*background-color: red;*/
   margin-top:2em;
   flex-direction: column;
-  width: 20em;
-  height: 20em;
+  width: 18em;
+  height: 18em;
   border-width: thin;
   border-style: solid;
   border-color: yellow;
@@ -92,8 +93,8 @@ body{
 #circle:active{
   margin-top:2em;
   flex-direction: column;
-  width: 20em;
-  height: 20em;
+  width: 18em;
+  height: 18em;
   border-width: thin;
   border-style: solid;
   border-color: yellow;
@@ -106,14 +107,13 @@ body{
 
 #session{
   font-family: Libre Franklin;
-  font-size: 2.2em;
+  font-size: 2em;
   display:flex;
   justify-content: center;
   align-items: center;
   color:white;
   width: 10em;
   height: 2.5em;
-  /*background-color: green;*/
 }
 
 #time{
@@ -124,14 +124,12 @@ body{
   color:white;
   width: 10em;
   height: 3em;
-  /*background-color: pink;*/
 }
 
 #resetButtonContainer{
   display: flex;
   justify-content: center;
   align-items: center;
-  /*background-color: red;*/
 }
 
 #resetButton{
@@ -139,15 +137,14 @@ body{
   cursor: pointer;
   display: flex;
   margin-bottom: 2em;
-  /*background-color: blue;*/
   justify-content: center;
   align-items: center;
   border-color: red;
   border-width: thin;
   border-style: solid;
   border-radius:180px;
-  width: 4em;
-  height: 4em;
+  width: 3em;
+  height: 3em;
   padding: 1em;
 }
 
