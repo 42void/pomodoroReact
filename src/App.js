@@ -63,13 +63,13 @@ class App extends Component {
         }
     }
 
-    var formatSeconds = function(seconds){  //seconds to format hh:mm:ss
+    const formatSeconds = function(seconds){  //seconds to format hh:mm:ss
       var date = new Date(1970,0,1);
       date.setSeconds(seconds);
       return date.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
     }
 
-    var countDown = () => {
+    const countDown = () => {
       var wav = 'http://clipart.usscouts.org/ScoutDoc/SeaExplr/WavFiles/SHIPBELL/CUCKOO.WAV';
       var audio = new Audio(wav);
       if(this.state.isPausedNow){
