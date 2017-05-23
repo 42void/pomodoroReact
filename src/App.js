@@ -70,6 +70,8 @@ class App extends Component {
     }
 
     var countDown = () => {
+      var wav = 'http://clipart.usscouts.org/ScoutDoc/SeaExplr/WavFiles/SHIPBELL/CUCKOO.WAV';
+      var audio = new Audio(wav);
       if(this.state.isPausedNow){
         this.setState({isPausedNow:false})
         this.intervalId = setInterval(() => {
@@ -77,6 +79,7 @@ class App extends Component {
             var newTimer = this.state.timer - 1 // - 1 second
             this.setState({ timer: newTimer });
           }else if(this.state.timer === 0){
+            audio.play();
             if(this.state.isSessionNow === true){
               this.setState({isSessionNow:false})
               this.setState({sessionOrBreak:'BREAK'})
